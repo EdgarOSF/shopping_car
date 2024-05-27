@@ -1,12 +1,13 @@
-import { BrowserRouter, useRoutes } from 'react-router-dom'
-import Home from '../Home'
-import MyAccount from '../MyAccount'
-import MyOrder from '../MyOrder'
-import MyOrders from '../MyOrders'
-import NotFound from '../NotFound'
-import SignIn from '../SignIn'
-import Navbar from '../../Components/Navbar'
-import './App.css'
+import { BrowserRouter, useRoutes } from 'react-router-dom';
+import { ShoppingCarProvider } from '../../Context';
+import Home from '../Home';
+import MyAccount from '../MyAccount';
+import MyOrder from '../MyOrder';
+import MyOrders from '../MyOrders';
+import NotFound from '../NotFound';
+import SignIn from '../SignIn';
+import Navbar from '../../Components/Navbar';
+import './App.css';
 
 const AppRoutes = () => {
   let routes = useRoutes([
@@ -16,18 +17,20 @@ const AppRoutes = () => {
     { path: '/my-orders', element: <MyOrders /> },
     { path: '/sign-in', element: <SignIn /> },
     { path: '/*', element: <NotFound /> },
-  ]) 
+  ]);
 
-  return routes
-}
+  return routes;
+};
 
 const App = () => {
   return (
-    <BrowserRouter>
-      <AppRoutes />
-      <Navbar />
-    </BrowserRouter>
-  )
-}
+    <ShoppingCarProvider>
+      <BrowserRouter>
+        <AppRoutes />
+        <Navbar />
+      </BrowserRouter>
+    </ShoppingCarProvider>
+  );
+};
 
-export default App
+export default App;
