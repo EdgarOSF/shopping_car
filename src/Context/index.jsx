@@ -4,7 +4,7 @@ export const ShoppingCarContext = createContext();
 
 export const ShoppingCarProvider = ({ children }) => {
   const [count, setCount] = useState(0);
-  
+  console.log('COUNT: ', count);
   return (
     <ShoppingCarContext.Provider
       value={{
