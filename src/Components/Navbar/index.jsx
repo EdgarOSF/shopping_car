@@ -1,11 +1,11 @@
-import { NavLink } from 'react-router-dom';
-import { useContext } from 'react';
-import { ShoppingCarContext } from '../../Context';
-import { ShoppingCartIcon } from '@heroicons/react/24/solid';
+import { NavLink } from 'react-router-dom'
+import { useContext } from 'react'
+import { ShoppingCarContext } from '../../Context'
+import { ShoppingCartIcon } from '@heroicons/react/24/solid'
 
 const Navbar = () => {
-  const context = useContext(ShoppingCarContext);
-  const activeStyle = 'underline underline-offset-4';
+  const context = useContext(ShoppingCarContext)
+  const activeStyle = 'underline underline-offset-4'
 
   return (
     <nav className="flex justify-between items-center fixed z-10 top-0 w-full py-5 px-8 text-sm font-light">
@@ -19,27 +19,47 @@ const Navbar = () => {
           </NavLink>
         </li>
         <li>
-          <NavLink to="/clothes" className={({ isActive }) => (isActive ? activeStyle : undefined)}>
+          <NavLink
+            to="/clothes"
+            onClick={() => context.setSearchByCategory('clothing')}
+            className={({ isActive }) => (isActive ? activeStyle : undefined)}
+          >
             Clothes
           </NavLink>
         </li>
         <li>
-          <NavLink to="/electronics" className={({ isActive }) => (isActive ? activeStyle : undefined)}>
+          <NavLink
+            to="/electronics"
+            onClick={() => context.setSearchByCategory('electronics')}
+            className={({ isActive }) => (isActive ? activeStyle : undefined)}
+          >
             Electronics
           </NavLink>
         </li>
         <li>
-          <NavLink to="/fornitures" className={({ isActive }) => (isActive ? activeStyle : undefined)}>
+          <NavLink
+            to="/jewelery"
+            onClick={() => context.setSearchByCategory('jewelery')}
+            className={({ isActive }) => (isActive ? activeStyle : undefined)}
+          >
             Fornitures
           </NavLink>
         </li>
         <li>
-          <NavLink to="/toys" className={({ isActive }) => (isActive ? activeStyle : undefined)}>
+          <NavLink
+            to="/toys"
+            onClick={() => context.setSearchByCategory('toys')}
+            className={({ isActive }) => (isActive ? activeStyle : undefined)}
+          >
             Toys
           </NavLink>
         </li>
         <li>
-          <NavLink to="/others" className={({ isActive }) => (isActive ? activeStyle : undefined)}>
+          <NavLink
+            to="/others"
+            onClick={() => context.setSearchByCategory('others')}
+            className={({ isActive }) => (isActive ? activeStyle : undefined)}
+          >
             Others
           </NavLink>
         </li>
@@ -63,11 +83,11 @@ const Navbar = () => {
         </li>
         <li className="flex justify-items-center cursor-pointer" onClick={() => context.openCheckoutSideMenu()}>
           <ShoppingCartIcon className="size-6 text-black"></ShoppingCartIcon>
-          <div>{context.count}</div>
+          <div>{context.cartProducts.length}</div>
         </li>
       </ul>
     </nav>
-  );
-};
+  )
+}
 
-export default Navbar;
+export default Navbar
